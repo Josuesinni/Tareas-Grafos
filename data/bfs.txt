@@ -1,0 +1,19 @@
+v r
+r v
+r s
+s r
+s w
+w s
+w t
+w x
+t w
+t u
+t x
+u t
+u y
+x t
+x w
+x y
+y u
+y x
+p

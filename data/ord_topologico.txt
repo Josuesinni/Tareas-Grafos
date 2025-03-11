@@ -1,0 +1,10 @@
+camisa corbata
+corbata saco
+camisa cinturon
+reloj
+ropa_interior zapatos
+ropa_interior pantalones
+pantalones zapatos
+pantalones cinturon
+calcetines zapatos
+cinturon saco
