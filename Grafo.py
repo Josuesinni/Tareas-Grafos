@@ -72,8 +72,8 @@ class Grafo:
             nodo.p = None
         tiempo = 0
         for nodo in self.V.values(): 
-            if not nodo.adyacentes:  #si el nodo no tiene adyacentes se omite (es un nodo aislado)
-                continue 
+            #if not nodo.adyacentes:  #si el nodo no tiene adyacentes se omite (es un nodo aislado)
+            #    continue 
             #Esta es la iteración, que vamos a hacer en lugar de iterar lso valores de V, vamos a iterar la lista que acabamos de encontrar en el orden en el que esta la lista
             #for nodo en lista, lo unico que tenemos es el nombre, ocupamos usar el addNode ya que tenemos el nomrbe y eso nos regresa el nodo
             #ademas en ese metodo vamos a crear un arbol ( una lista vacia con el nombre de arvol, cada que termine un nodo lo vamos a añadir a ese árbol, es decir, vamos a crear un bosque y luego un arvol
@@ -133,6 +133,9 @@ class Grafo:
         tiempo += 1
         u.f = tiempo
         return tiempo
+    
+    def get_lista(self):
+        return self.lista
     
     def mst_krusal(self):
         kruskal=Grafo("mst-kruskal")

@@ -5,8 +5,8 @@ from Grafo import Grafo
 #archivo = open('data/scc.txt')
 #archivo = open('data/ord_topologico.txt')
 #archivo = open('data/esparcimiento_minimo.txt')
-#archivo = open('data/Ordenamiento Topologico/Ejemplo1.txt')
-archivo = open('data/Coponentes Fuertemente Conectados/Ejemplo2.txt')
+archivo = open('data/Ordenamiento Topológico/Ejemplo2.txt')
+#archivo = open('data/Coponentes Fuertemente Conectados/Ejemplo2.txt')
 lineas = archivo.readlines()
 nodos = {}
 arcos = []
@@ -34,7 +34,7 @@ for arco in arcos:
 #grafo.graficar()
 
 #Ordenar por tiempo los nodos metodo dfs
-#"""
+"""
 print(grafo)
 grafo.dfs()
 #print(grafo)
@@ -48,7 +48,7 @@ for element in lista:
 
 #print(grafo)
 #Componentes fuertemente conectados SCC
-#"""
+"""
 gt = grafo.getTranspuesto()
 gt.dfs()
 bosque=gt.scc(newList)
@@ -56,13 +56,14 @@ for arbol in bosque:
     print(f"{[nodo.nombre for nodo in arbol]}")
 #"""
 #Ordenamiento topologico
-"""
+#"""
+print(grafo)
 grafo.dfs()
 lista=grafo.get_lista()
 print(f"{[(element.nombre) for element in lista]}")
-for element in lista:
-    print(element)
-"""
+#for element in lista:
+#    print(element)
+#"""
 """    
 #Algoritmo Kruskal
 kruskal=grafo.mst_krusal()

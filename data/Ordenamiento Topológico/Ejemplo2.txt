@@ -1,0 +1,10 @@
+camisa corbata 1
+corbata saco 1
+camisa cinturon 1
+reloj
+calzoncillo pantalon 1
+calzoncillo zapatos 1
+calcetines zapatos 1
+pantalon zapatos 1
+pantalon cinturon 1
+cinturon saco 1

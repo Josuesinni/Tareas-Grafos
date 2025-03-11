@@ -12,4 +12,16 @@ f g 1
 g f 1
 g h 1
 h h 1
-k
+b a 1
+c b 1
+e b 1
+f b 1
+d c 1
+g c 1
+c d 1
+h d 1
+a e 1
+f e 1
+g f 1
+f g 1
+h g 1
