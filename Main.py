@@ -7,7 +7,8 @@ from Grafo import Grafo
 #archivo = open('data/esparcimiento_minimo.txt')
 #archivo = open('data/Ordenamiento Topológico/Ejemplo2.txt')
 #archivo = open('data/Coponentes Fuertemente Conectados/Ejemplo2.txt')
-archivo = open('data/Kruskal/Ejemplo2.txt')
+#archivo = open('data/Kruskal/Ejemplo2.txt')
+archivo = open('data/Prim/Ejemplo2.txt')
 lineas = archivo.readlines()
 nodos = {}
 arcos = []
@@ -65,15 +66,17 @@ print(f"{[(element.nombre) for element in lista]}")
 #for element in lista:
 #    print(element)
 #"""
-#"""    
+"""    
 #Algoritmo Kruskal
 print(grafo)
 kruskal=grafo.mst_kruskal()
 print(kruskal)
 #kruskal.graficar()
 #"""
-#prim=grafo.mst_prim("a")
-#print(prim)
-#prim.graficar()
-
+#"""
+print(grafo)
+prim=grafo.mst_prim("s")
+print(prim)
+prim.graficar()
+#"""
 

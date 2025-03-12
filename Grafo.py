@@ -190,51 +190,45 @@ class Grafo:
         Se mete la arista al nodo
         A la hora de relajar se tiene que añadir quien lo relajo
         Los nodos pueden volver a relajar a otro nodo
-        """
-        
-        
+        """        
         prim = Grafo("mst-prim")
         for nodo in self.V.values():
             prim.addNodo(nodo.nombre)
-            for arco in nodo.adyacentes.values():
-                prim.addArco(Arco(arco.origen,arco.destino,arco.costo))
-        
+            
         for nodo in prim.V.values():
             nodo.d = float("Inf")  #d es key
-            nodo.p = None
+            nodo.p = None #pi es el padre
 
-        nodo = prim.V[nodoInicial]
-        nodo.d = 0
-
+        prim.V[nodoInicial].d=0
         Q = list(prim.V.values())
 
-        while len(Q) > 0:
-            u = self.min_q(Q)  #Se busca el que tiene el menor valor de los arcos
+        while len(Q) != 0:
+            u = prim.min_q(Q)  #Se busca el que tiene el menor valor de los arcos
             Q.remove(u)
-            print(f"Nodo actual: {u.nombre}")
             
-            for destino, arco in u.adyacentes.items():
+            for destino, arco in self.V[u.nombre].adyacentes.items(): #sacamos los adyacentes
+                #print("NodoOrigen:",u.nombre,"Adyacente:", destino)
                 v = prim.V[destino]
                 #Si aún esta en la cola quiere decir que aún no esta de rojo
                 if v in Q and arco.costo < v.d:
+                    #print("Costo del arco:",arco.costo,"KeyDestino:", v.d)
                     v.p = u
                     v.d = u.d+arco.costo
-                    
-        resultado = []
+                    #print("Padre de v:",v.p,"KeyDestinoActualizada:", v.d)
+                    #print("")
+        #Añadimos los arcos con los datos resultantes de los padres y de distancia (pi y key)
         for nodo in list(prim.V.values()):
             if nodo.p is not None:
-                resultado.append(f"{nodo.p.nombre} --({nodo.d})--> {nodo.nombre}")
-
-        print("\nÁrbol de Expansión Mínima:")
-        for arista in resultado:
-            print(arista)
-            
+                prim.addArco(Arco(nodo.p.nombre,nodo.nombre,nodo.d))
+                prim.addArco(Arco(nodo.nombre,nodo.p.nombre,nodo.d))
+                
         return prim
 
     def min_q(self, Q):
         minNodo = Q[0]
         for nodo in Q:
-            if nodo.id < minNodo.id:
+            #print("Nodo actual del for: "+nodo.nombre, "d: ",nodo.d,"Primer nodo de Q[0]",minNodo.nombre, "d: ",minNodo.d)
+            if nodo.d < minNodo.d:
                 minNodo = nodo
         return minNodo
 
