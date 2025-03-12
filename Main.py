@@ -5,8 +5,9 @@ from Grafo import Grafo
 #archivo = open('data/scc.txt')
 #archivo = open('data/ord_topologico.txt')
 #archivo = open('data/esparcimiento_minimo.txt')
-archivo = open('data/Ordenamiento Topológico/Ejemplo2.txt')
+#archivo = open('data/Ordenamiento Topológico/Ejemplo2.txt')
 #archivo = open('data/Coponentes Fuertemente Conectados/Ejemplo2.txt')
+archivo = open('data/Kruskal/Ejemplo2.txt')
 lineas = archivo.readlines()
 nodos = {}
 arcos = []
@@ -56,7 +57,7 @@ for arbol in bosque:
     print(f"{[nodo.nombre for nodo in arbol]}")
 #"""
 #Ordenamiento topologico
-#"""
+"""
 print(grafo)
 grafo.dfs()
 lista=grafo.get_lista()
@@ -64,12 +65,13 @@ print(f"{[(element.nombre) for element in lista]}")
 #for element in lista:
 #    print(element)
 #"""
-"""    
+#"""    
 #Algoritmo Kruskal
-kruskal=grafo.mst_krusal()
+print(grafo)
+kruskal=grafo.mst_kruskal()
 print(kruskal)
-kruskal.graficar()
-"""
+#kruskal.graficar()
+#"""
 #prim=grafo.mst_prim("a")
 #print(prim)
 #prim.graficar()

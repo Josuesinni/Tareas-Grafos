@@ -17,7 +17,8 @@ class Grafo:
         origen = self.addNodo(arco.origen)
         destino = self.addNodo(arco.destino)
         origen.addAdyacentes(arco)
-
+        #destino.addAdyacentes(Arco(arco.destino, arco.origen, arco.costo))
+        
     def getE ( self):
         E = []
         for nodo in self.V.values():
@@ -56,8 +57,7 @@ class Grafo:
                     Q.append(v)
             u.color = Color.NEGRO
         print(Q)
-    
-    
+     
     def getTranspuesto(self):
         gt = Grafo(self.nombre + "-transpuesto")
         for nodo in self.V.values():
@@ -137,7 +137,7 @@ class Grafo:
     def get_lista(self):
         return self.lista
     
-    def mst_krusal(self):
+    def mst_kruskal(self):
         kruskal=Grafo("mst-kruskal")
         aristas=[]
         for nodo in self.V.values():
@@ -148,30 +148,39 @@ class Grafo:
         #Se aplica el "make-set"         
         for index,nodo in enumerate(kruskal.V.values()):
             nodo.id=index
+        #print(kruskal)
         #Se ordenan las aristas en orden ascendentes de acuerdo a su peso/costo
-        lista = sorted(aristas, key=lambda arco: arco.costo)
+        aristas.sort(key=lambda arco: arco.costo)
         
-        for arista in lista:
+        for arista in aristas:
             #Se toman los nodos de origen y destino de cada arista
             u = kruskal.V[arista.origen]
             v = kruskal.V[arista.destino]
-            if self.find_set(u) != self.find_set(v):
+            #print("Origen",u,"Destino", v)
+            if kruskal.find_set(u) != kruskal.find_set(v):
                 kruskal.addArco(arista)
-                self.union(kruskal, u, v)
+                #print(Arco(arista.destino,arista.origen,arista.costo))
+                kruskal.addArco(Arco(arista.destino,arista.origen,arista.costo))
+                #print(kruskal)
+                kruskal.union(u, v)
         return kruskal
     
-    def find_set(self,u):
-        return u.id
+    def find_set(self, nodo):
+        #print("nombre:",nodo.nombre," id: ",self.V[nodo.nombre].id)
+        return self.V[nodo.nombre].id
     
-    def union(self, grafo, u, v):
-        id_u = u.id
-        id_v = v.id
-        for nodo in grafo.V.values():
-            if nodo.id == id_v:
-                nodo.id = id_u
-    
-    def connected(u,v):
-        return u.id==v.id
+    def union(self, u_origen, v_origen):
+        u = self.find_set(u_origen)
+        v = self.find_set(v_origen)
+        self.V[v_origen.nombre].id=u
+        #print("UNION")
+        for nodo in self.V.values():
+            #print("Nodo pre evaluación ",nodo)
+            if(nodo.id==v):
+                self.V[nodo.nombre].id=u
+            #print("Nodo post evaluación",nodo)
+                
+                
     
     def mst_prim(self, nodoInicial):
         

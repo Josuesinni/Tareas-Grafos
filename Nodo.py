@@ -21,7 +21,7 @@ class Nodo:
             self.adyacentes[arco.destino]=arco
     
     def __str__(self):
-        cadena = str(self.nombre)+" f:"+str(self.d)+"/"+str(self.f)+" p: -> "
+        cadena = str(self.nombre)+" id:"+str(self.id)+ " f:"+str(self.d)+"/"+str(self.f)+" p: -> "
         for destino,arco in self.adyacentes.items():
             cadena += str(destino) + ":" + str(arco.costo) + ", "
         return cadena
